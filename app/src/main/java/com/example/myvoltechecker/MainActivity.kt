@@ -13,7 +13,7 @@ import androidx.core.content.ContextCompat
 class MainActivity : AppCompatActivity() {
 
     private lateinit var volteStatusText: TextView
-    private val REQUEST_READ_PHONE_STATE = 1001
+    private val requestReadPhoneState = 1001
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(
                 this,
                 arrayOf(Manifest.permission.READ_PHONE_STATE),
-                REQUEST_READ_PHONE_STATE
+                requestReadPhoneState
             )
         } else {
             checkVolteStatus()
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == REQUEST_READ_PHONE_STATE && grantResults.isNotEmpty() &&
+        if (requestCode == requestReadPhoneState && grantResults.isNotEmpty() &&
             grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             checkVolteStatus()
         } else {
